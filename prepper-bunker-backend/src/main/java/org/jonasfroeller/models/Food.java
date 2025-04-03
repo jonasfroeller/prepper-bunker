@@ -1,4 +1,16 @@
 package org.jonasfroeller.models;
 
-public class Food {
+import jakarta.persistence.*;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import java.time.LocalDate;
+
+@Entity
+public class Food extends PanacheEntity {
+    public String type;
+    public double quantity;
+    public LocalDate expirationDate;
+
+    @ManyToOne
+    @JoinColumn(name = "storage_location_id")
+    public StorageLocation storageLocation;
 }
