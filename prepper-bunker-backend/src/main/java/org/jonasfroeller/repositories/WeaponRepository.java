@@ -13,6 +13,6 @@ public class WeaponRepository implements PanacheRepository<Weapon> {
     }
 
     public long totalQuantity() {
-        return findAll().stream().mapToLong(Weapon::getQuantity).sum();
+        return findAll().stream().mapToLong(weapon -> weapon.quantity).sum();
     }
 }

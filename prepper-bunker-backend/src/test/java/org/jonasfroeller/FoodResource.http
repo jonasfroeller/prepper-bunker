@@ -1,0 +1,51 @@
+### Variables
+@baseUrl = http://localhost:8069
+@resourcePath = food
+
+### Get all food items
+GET {{baseUrl}}/{{resourcePath}}
+Accept: application/json
+
+### Get food item by ID
+GET {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
+
+### Get food items by location
+GET {{baseUrl}}/{{resourcePath}}/by-location/2
+Accept: application/json
+
+### Get expired food items
+GET {{baseUrl}}/{{resourcePath}}/expired
+Accept: application/json
+
+### Get food items expiring soon
+GET {{baseUrl}}/{{resourcePath}}/expiring-soon
+Accept: application/json
+
+### Create a new food item
+POST {{baseUrl}}/{{resourcePath}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "Reis",
+  "quantity": 15.0,
+  "expirationDate": "2026-12-31",
+  "storageLocationId": 2
+}
+
+### Update a food item
+PUT {{baseUrl}}/{{resourcePath}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "Konserven",
+  "quantity": 55.0,
+  "expirationDate": "2026-08-31",
+  "storageLocationId": 2
+}
+
+### Delete a food item
+DELETE {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json

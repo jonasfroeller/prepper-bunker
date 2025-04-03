@@ -1,0 +1,49 @@
+### Variables
+@baseUrl = http://localhost:8069
+@resourcePath = fuel
+
+### Get all fuel records
+GET {{baseUrl}}/{{resourcePath}}
+Accept: application/json
+
+### Get fuel record by ID
+GET {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
+
+### Get fuel records by location
+GET {{baseUrl}}/{{resourcePath}}/by-location/4
+Accept: application/json
+
+### Get fuel records by type
+GET {{baseUrl}}/{{resourcePath}}/by-type/12
+Accept: application/json
+
+### Get total quantity of fuel by type
+GET {{baseUrl}}/{{resourcePath}}/total-by-type/13
+Accept: application/json
+
+### Create a new fuel record
+POST {{baseUrl}}/{{resourcePath}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "fuelTypeId": 14,
+  "quantity": 35.0,
+  "storageLocationId": 4
+}
+
+### Update a fuel record
+PUT {{baseUrl}}/{{resourcePath}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "fuelTypeId": 1,
+  "quantity": 250.0,
+  "storageLocationId": 1
+}
+
+### Delete a fuel record
+DELETE {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json

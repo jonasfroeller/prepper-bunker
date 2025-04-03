@@ -1,0 +1,57 @@
+### Variables
+@baseUrl = http://localhost:8069
+@resourcePath = medications
+
+### Get all medications
+GET {{baseUrl}}/{{resourcePath}}
+Accept: application/json
+
+### Get medication by ID
+GET {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
+
+### Get medications by location
+GET {{baseUrl}}/{{resourcePath}}/by-location/3
+Accept: application/json
+
+### Get medications by purpose
+GET {{baseUrl}}/{{resourcePath}}/by-purpose/Schmerzmittel
+Accept: application/json
+
+### Get expired medications
+GET {{baseUrl}}/{{resourcePath}}/expired
+Accept: application/json
+
+### Get medications expiring soon
+GET {{baseUrl}}/{{resourcePath}}/expiring-soon
+Accept: application/json
+
+### Create a new medication
+POST {{baseUrl}}/{{resourcePath}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Ibuprofen",
+  "quantity": 100,
+  "expirationDate": "2025-12-31",
+  "purpose": "Schmerzmittel",
+  "storageLocationId": 3
+}
+
+### Update a medication
+PUT {{baseUrl}}/{{resourcePath}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Paracetamol",
+  "quantity": 250,
+  "expirationDate": "2025-12-31",
+  "purpose": "Schmerzmittel",
+  "storageLocationId": 2
+}
+
+### Delete a medication
+DELETE {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json

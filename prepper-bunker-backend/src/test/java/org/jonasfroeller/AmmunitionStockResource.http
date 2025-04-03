@@ -1,0 +1,45 @@
+### Variables
+@baseUrl = http://localhost:8069
+@resourcePath = ammunition-stocks
+
+### Get all ammunition stocks
+GET {{baseUrl}}/{{resourcePath}}
+Accept: application/json
+
+### Get ammunition stock by ID
+GET {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
+
+### Get ammunition stocks by location
+GET {{baseUrl}}/{{resourcePath}}/by-location/7
+Accept: application/json
+
+### Get total quantity by ammunition type
+GET {{baseUrl}}/{{resourcePath}}/total/2
+Accept: application/json
+
+### Create a new ammunition stock
+POST {{baseUrl}}/{{resourcePath}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "ammunitionTypeId": 2,
+  "quantity": 500,
+  "storageLocationId": 1
+}
+
+### Update an ammunition stock
+PUT {{baseUrl}}/{{resourcePath}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "ammunitionTypeId": 1,
+  "quantity": 600,
+  "storageLocationId": 1
+}
+
+### Delete an ammunition stock
+DELETE {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json

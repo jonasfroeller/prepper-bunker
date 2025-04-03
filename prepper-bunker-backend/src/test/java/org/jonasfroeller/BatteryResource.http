@@ -1,0 +1,51 @@
+### Variables
+@baseUrl = http://localhost:8069
+@resourcePath = batteries
+
+### Get all batteries
+GET {{baseUrl}}/{{resourcePath}}
+Accept: application/json
+
+### Get battery by ID
+GET {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
+
+### Get batteries by location
+GET {{baseUrl}}/{{resourcePath}}/by-location/1
+Accept: application/json
+
+### Get batteries by type
+GET {{baseUrl}}/{{resourcePath}}/by-type/AA
+Accept: application/json
+
+### Get total quantity of batteries by type
+GET {{baseUrl}}/{{resourcePath}}/total-by-type/AA
+Accept: application/json
+
+### Create a new battery
+POST {{baseUrl}}/{{resourcePath}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "AAA",
+  "capacity": 1000,
+  "quantity": 50,
+  "storageLocationId": 1
+}
+
+### Update a battery
+PUT {{baseUrl}}/{{resourcePath}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "AA",
+  "capacity": 1.5,
+  "quantity": 120,
+  "storageLocationId": 1
+}
+
+### Delete a battery
+DELETE {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json

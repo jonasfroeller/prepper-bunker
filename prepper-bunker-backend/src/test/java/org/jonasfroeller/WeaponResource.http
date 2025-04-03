@@ -1,0 +1,45 @@
+### Variables
+@baseUrl = http://localhost:8069
+@resourcePath = weapons
+
+### Get all weapons
+GET {{baseUrl}}/{{resourcePath}}
+Accept: application/json
+
+### Get weapon by ID
+GET {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
+
+### Get weapons by location
+GET {{baseUrl}}/{{resourcePath}}/by-location/1
+Accept: application/json
+
+### Create a new weapon
+POST {{baseUrl}}/{{resourcePath}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "Pistole",
+  "model": "Glock 17",
+  "quantity": 2,
+  "ammunitionTypeId": 2,
+  "storageLocationId": 1
+}
+
+### Update a weapon
+PUT {{baseUrl}}/{{resourcePath}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "Gewehr",
+  "model": "AK-47 Mod",
+  "quantity": 6,
+  "ammunitionTypeId": 1,
+  "storageLocationId": 1
+}
+
+### Delete a weapon
+DELETE {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json

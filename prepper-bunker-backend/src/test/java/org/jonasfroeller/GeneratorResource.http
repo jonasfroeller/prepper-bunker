@@ -1,0 +1,53 @@
+### Variables
+@baseUrl = http://localhost:8069
+@resourcePath = generators
+
+### Get all generators
+GET {{baseUrl}}/{{resourcePath}}
+Accept: application/json
+
+### Get generator by ID
+GET {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
+
+### Get generators by location
+GET {{baseUrl}}/{{resourcePath}}/by-location/1
+Accept: application/json
+
+### Get generators by fuel type
+GET {{baseUrl}}/{{resourcePath}}/by-fuel-type/1
+Accept: application/json
+
+### Get generators by status
+GET {{baseUrl}}/{{resourcePath}}/by-status/funktionsfähig
+Accept: application/json
+
+### Create a new generator
+POST {{baseUrl}}/{{resourcePath}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "Notstrom",
+  "power": 2000,
+  "fuelTypeId": 1,
+  "status": "funktionsfähig",
+  "storageLocationId": 1
+}
+
+### Update a generator
+PUT {{baseUrl}}/{{resourcePath}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "Notstrom",
+  "power": 2500,
+  "fuelTypeId": 1,
+  "status": "in Wartung",
+  "storageLocationId": 1
+}
+
+### Delete a generator
+DELETE {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json

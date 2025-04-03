@@ -1,0 +1,35 @@
+### Variables
+@baseUrl = http://localhost:8069
+@resourcePath = storage-locations
+
+### Get all storage locations
+GET {{baseUrl}}/{{resourcePath}}
+Accept: application/json
+
+### Get storage location by ID
+GET {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
+
+### Create a new storage location
+POST {{baseUrl}}/{{resourcePath}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Werkstatt",
+  "description": "Raum für Werkzeuge und Reparaturen"
+}
+
+### Update a storage location
+PUT {{baseUrl}}/{{resourcePath}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Waffenkammer",
+  "description": "Gesicherter Raum für Waffen und Munition"
+}
+
+### Delete a storage location
+DELETE {{baseUrl}}/{{resourcePath}}/12
+Accept: application/json

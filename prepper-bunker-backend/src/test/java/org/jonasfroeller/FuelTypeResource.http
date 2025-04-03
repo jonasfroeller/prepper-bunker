@@ -1,0 +1,33 @@
+### Variables
+@baseUrl = http://localhost:8069
+@resourcePath = fuel-types
+
+### Get all fuel types
+GET {{baseUrl}}/{{resourcePath}}
+Accept: application/json
+
+### Get fuel type by ID
+GET {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
+
+### Create a new fuel type
+POST {{baseUrl}}/{{resourcePath}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Erdgas"
+}
+
+### Update a fuel type
+PUT {{baseUrl}}/{{resourcePath}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Super Diesel"
+}
+
+### Delete a fuel type
+DELETE {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json

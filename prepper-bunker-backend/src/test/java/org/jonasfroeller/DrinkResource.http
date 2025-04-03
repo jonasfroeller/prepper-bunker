@@ -1,0 +1,51 @@
+### Variables
+@baseUrl = http://localhost:8069
+@resourcePath = drinks
+
+### Get all drinks
+GET {{baseUrl}}/{{resourcePath}}
+Accept: application/json
+
+### Get drink by ID
+GET {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
+
+### Get drinks by location
+GET {{baseUrl}}/{{resourcePath}}/by-location/2
+Accept: application/json
+
+### Get expired drinks
+GET {{baseUrl}}/{{resourcePath}}/expired
+Accept: application/json
+
+### Get drinks expiring soon
+GET {{baseUrl}}/{{resourcePath}}/expiring-soon
+Accept: application/json
+
+### Create a new drink
+POST {{baseUrl}}/{{resourcePath}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "Energydrink",
+  "quantity": 20.0,
+  "expirationDate": "2025-12-31",
+  "storageLocationId": 2
+}
+
+### Update a drink
+PUT {{baseUrl}}/{{resourcePath}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "type": "Wasser",
+  "quantity": 120.0,
+  "expirationDate": "2026-12-31",
+  "storageLocationId": 2
+}
+
+### Delete a drink
+DELETE {{baseUrl}}/{{resourcePath}}/1
+Accept: application/json
