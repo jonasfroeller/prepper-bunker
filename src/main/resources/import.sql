@@ -133,8 +133,8 @@ INSERT INTO ammunition_type (caliber, type) VALUES
     ('7.62x51mm NATO', 'Sturmgewehr');
 
 INSERT INTO weapon (type, model, quantity, ammunition_type_id, storage_location_id) VALUES
-    ('Gewehr', 'AK-47', 5, 1, 1),
-    ('Pistole', 'Glock 17', 10, 2, 1),
+    ('Gewehr', 'AK-47', 5, 1, 1), -- 7.62mm
+    ('Pistole', 'Glock 17', 10, 2, 1), -- 9mm
     ('Pistole', 'Glock 20', 4, 13, 11),  -- 10mm Auto
     ('Revolver', 'Ruger Redhawk', 3, 14, 11),  -- .44 Magnum
     ('Pistole', 'FN Five-seveN', 5, 15, 11),  -- 5.7x28mm
