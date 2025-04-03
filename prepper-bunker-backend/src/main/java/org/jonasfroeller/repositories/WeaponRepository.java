@@ -2,7 +2,7 @@ package org.jonasfroeller.repositories;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
-import org.jonasfroeller.model.Weapon;
+import org.jonasfroeller.models.Weapon;
 
 import java.util.List;
 

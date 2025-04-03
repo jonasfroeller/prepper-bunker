@@ -1,4 +1,4 @@
-package org.jonasfroeller.model;
+package org.jonasfroeller.models;
 
 public class AmmunitionStock {
 }
