@@ -123,8 +123,9 @@ The database is initialized with sample data using the [import.sql](prepper-bunk
 
 ## Project Structure
 
-- `/prepper-bunker-backend`: Quarkus backend
-- `/prepper-bunker-frontend`: Angular Renaissance frontend
+- `/templates`: Empty starter templates for students to begin implementation
+- `/prepper-bunker-backend`: Completed Quarkus backend implementation
+- `/prepper-bunker-frontend`: Completed Angular Renaissance frontend implementation
 
 ## Learning Objectives
 
