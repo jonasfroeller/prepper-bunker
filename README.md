@@ -143,7 +143,7 @@ This project is designed to help students:
 
 1. Navigate to `/prepper-bunker-backend`
 2. Run `./mvnw quarkus:dev` to start the development server
-3. Access the OpenAPI documentation at `http://localhost:8080/q/openapi`
+3. Access the OpenAPI documentation at `http://localhost:8069/q/openapi`
 
 ### Frontend Setup
 

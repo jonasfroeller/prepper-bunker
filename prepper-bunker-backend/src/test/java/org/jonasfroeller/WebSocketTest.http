@@ -3,10 +3,10 @@
 # Consider using other tools like wscat or a browser-based WebSocket client
 
 # WebSocket endpoint
-# ws://localhost:8080/ws/updates
+# ws://localhost:8069/ws/updates
 
 # To connect using wscat:
-# wscat -c ws://localhost:8080/ws/updates
+# wscat -c ws://localhost:8069/ws/updates
 
 # After establishing a connection, perform CRUD operations using the other HTTP files
 # to see real-time notifications coming through the WebSocket
