@@ -17,16 +17,6 @@ mat-dialog-content {
   display: block;
 }
 
-/* Enhance date picker appearance */
-::ng-deep .mat-datepicker-toggle {
-  color: #673ab7;
-}
-
 ::ng-deep .mat-calendar {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-::ng-deep .mat-calendar-body-selected {
-  background-color: #673ab7;
-  color: white;
 }

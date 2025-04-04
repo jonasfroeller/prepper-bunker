@@ -5,7 +5,7 @@
 
 @include mat.all-component-themes(mat.define-dark-theme((
   color: (
-    primary: mat.define-palette(mat.$purple-palette),
+    primary: mat.define-palette(mat.$green-palette),
     accent: mat.define-palette(mat.$green-palette),
   ),
   typography: mat.define-typography-config(),
@@ -32,6 +32,6 @@ html, body {
   background: transparent !important;
   
   .mat-mdc-row:hover {
-    background-color: rgba(103, 58, 183, 0.1);
+    background-color: rgba(76, 175, 80, 0.1);
   }
 }
