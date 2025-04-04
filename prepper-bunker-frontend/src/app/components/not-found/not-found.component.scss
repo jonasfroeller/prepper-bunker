@@ -1,0 +1,31 @@
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  
+  mat-card {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .error-code {
+    font-size: 6rem;
+    font-weight: 700;
+    color: #673ab7;
+    line-height: 1;
+    margin: 20px 0;
+  }
+  
+  mat-card-content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,91 @@
+<div class="summary-section">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Ammunition Type Totals</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="type-badges">
+        @for (type of ammunitionTypes(); track type.id) {
+          <div class="ammo-type-badge">
+            <span class="ammo-type-label">{{ type.caliber }} {{ type.type }}</span>
+            <span class="ammo-type-total">{{ typeTotals().get(type.id) || 0 }}</span>
+          </div>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Ammunition Inventory</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @if (loading()) {
+      <div class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Loading ammunition stocks...</p>
+      </div>
+    } @else if (error()) {
+      <div class="error-container">
+        <p>{{ error() }}</p>
+        <button mat-raised-button color="primary" (click)="loadData()">Retry</button>
+      </div>
+    } @else if (ammunitionStocks().length === 0) {
+      <div class="empty-container">
+        <p>No ammunition found in inventory.</p>
+        <button mat-raised-button color="primary" (click)="openAddDialog()">Add Ammunition Stock</button>
+      </div>
+    } @else {
+      <div class="table-container">
+        <table mat-table [dataSource]="ammunitionStocks()">
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let item">{{ item.id }}</td>
+          </ng-container>
+          
+          <!-- Type Column -->
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef>Type</th>
+            <td mat-cell *matCellDef="let item">{{ ammoTypeMap().get(item.ammunitionTypeId) || 'Unknown' }}</td>
+          </ng-container>
+          
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>Quantity</th>
+            <td mat-cell *matCellDef="let item">{{ item.quantity }}</td>
+          </ng-container>
+          
+          <!-- Storage Location Column -->
+          <ng-container matColumnDef="storageLocation">
+            <th mat-header-cell *matHeaderCellDef>Location</th>
+            <td mat-cell *matCellDef="let item">{{ storageLocationMap().get(item.storageLocationId) || 'Unknown' }}</td>
+          </ng-container>
+          
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let item">
+              <button mat-icon-button color="primary" title="Edit" (click)="openEditDialog(item)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" title="Delete" (click)="deleteAmmunitionStock(item.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    }
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" (click)="openAddDialog()">
+      <mat-icon>add</mat-icon>
+      Add Ammunition Stock
+    </button>
+  </mat-card-actions>
+</mat-card>

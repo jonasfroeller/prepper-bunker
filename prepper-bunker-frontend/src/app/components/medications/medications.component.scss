@@ -1,0 +1,44 @@
+.loading-container, .error-container, .empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+  
+  table {
+    width: 100%;
+  }
+}
+
+mat-card {
+  margin-bottom: 20px;
+}
+
+.mat-column-actions {
+  width: 100px;
+  text-align: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.expired {
+  color: #f44336;
+  font-weight: 500;
+}
+
+mat-card-header {
+  display: flex;
+  align-items: center;
+}
+
+.mat-column-purpose {
+  max-width: 200px;
+}

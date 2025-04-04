@@ -1,4 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@use '@angular/material' as mat;
+@include mat.core();
+
+@include mat.all-component-themes(mat.define-dark-theme((
+  color: (
+    primary: mat.define-palette(mat.$purple-palette),
+    accent: mat.define-palette(mat.$green-palette),
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+)));
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #303030;
+  color: white;
+}
+
+.mat-mdc-card {
+  --mdc-elevated-card-container-color: #424242;
+}
+
+.content-spacing {
+  margin: 16px;
+}
+
+.mat-mdc-table {
+  background: transparent !important;
+  
+  .mat-mdc-row:hover {
+    background-color: rgba(103, 58, 183, 0.1);
+  }
+}

@@ -1,0 +1,46 @@
+.loading-container, .error-container, .empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+  
+  table {
+    width: 100%;
+  }
+}
+
+mat-card {
+  margin-bottom: 20px;
+}
+
+.fuel-type-badge {
+  background-color: rgba(103, 58, 183, 0.1);
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  white-space: nowrap;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.location-badge {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.mat-column-actions {
+  width: 100px;
+  text-align: center;
+}

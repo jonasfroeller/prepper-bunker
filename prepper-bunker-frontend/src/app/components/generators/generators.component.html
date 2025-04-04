@@ -1,0 +1,102 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Generators</mat-card-title>
+    <mat-card-subtitle>Manage your power generators</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- Loading spinner -->
+    @if (loading()) {
+      <div class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Loading generators...</p>
+      </div>
+    }
+
+    <!-- Error message -->
+    @if (error()) {
+      <div class="error-container">
+        <p>{{ error() }}</p>
+        <button mat-raised-button color="primary" (click)="loadData()">Retry</button>
+      </div>
+    }
+
+    <!-- Empty state -->
+    @if (!loading() && !error() && generators().length === 0) {
+      <div class="empty-container">
+        <p>No generators found.</p>
+        <button mat-raised-button color="primary" (click)="openAddDialog()">Add Generator</button>
+      </div>
+    }
+
+    <!-- Generators table -->
+    @if (!loading() && !error() && generators().length > 0) {
+      <div class="table-container">
+        <table mat-table [dataSource]="generators()" class="mat-elevation-z4">
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let generator">{{ generator.id }}</td>
+          </ng-container>
+
+          <!-- Type Column -->
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef>Type</th>
+            <td mat-cell *matCellDef="let generator">{{ generator.type }}</td>
+          </ng-container>
+
+          <!-- Power Output Column -->
+          <ng-container matColumnDef="power">
+            <th mat-header-cell *matHeaderCellDef>Power Output</th>
+            <td mat-cell *matCellDef="let generator">{{ formatPowerOutput(generator.power) }}</td>
+          </ng-container>
+
+          <!-- Fuel Type Column -->
+          <ng-container matColumnDef="fuelType">
+            <th mat-header-cell *matHeaderCellDef>Fuel Type</th>
+            <td mat-cell *matCellDef="let generator">
+              <span class="fuel-type-badge">{{ getFuelTypeName(generator.fuelTypeId) }}</span>
+            </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let generator">{{ generator.status }}</td>
+          </ng-container>
+
+          <!-- Storage Location Column -->
+          <ng-container matColumnDef="storageLocation">
+            <th mat-header-cell *matHeaderCellDef>Storage Location</th>
+            <td mat-cell *matCellDef="let generator">
+              <span class="location-badge">
+                {{ getStorageLocationName(generator.storageLocationId) }}
+              </span>
+            </td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let generator">
+              <button mat-icon-button color="primary" (click)="openEditDialog(generator)" aria-label="Edit generator">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteGenerator(generator.id)" aria-label="Delete generator">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    }
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" (click)="openAddDialog()">
+      <mat-icon>add</mat-icon>
+      Add Generator
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,78 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Storage Locations</mat-card-title>
+    <mat-card-subtitle>Manage your storage locations</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- Loading spinner -->
+    @if (loading()) {
+      <div class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Loading storage locations...</p>
+      </div>
+    }
+
+    <!-- Error message -->
+    @if (error()) {
+      <div class="error-container">
+        <p>{{ error() }}</p>
+        <button mat-raised-button color="primary" (click)="loadData()">Retry</button>
+      </div>
+    }
+
+    <!-- Empty state -->
+    @if (!loading() && !error() && storageLocations().length === 0) {
+      <div class="empty-container">
+        <p>No storage locations found.</p>
+        <button mat-raised-button color="primary" (click)="openAddDialog()">Add Storage Location</button>
+      </div>
+    }
+
+    <!-- Storage locations table -->
+    @if (!loading() && !error() && storageLocations().length > 0) {
+      <div class="table-container">
+        <table mat-table [dataSource]="storageLocations()" class="mat-elevation-z4">
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let location">{{ location.id }}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let location">{{ location.name }}</td>
+          </ng-container>
+
+          <!-- Description Column -->
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let location">{{ location.description || 'N/A' }}</td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let location">
+              <button mat-icon-button color="primary" (click)="openEditDialog(location)" aria-label="Edit storage location">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteStorageLocation(location.id)" aria-label="Delete storage location">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    }
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" (click)="openAddDialog()">
+      <mat-icon>add</mat-icon>
+      Add Storage Location
+    </button>
+  </mat-card-actions>
+</mat-card>

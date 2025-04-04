@@ -1,0 +1,96 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Medications Inventory</mat-card-title>
+    <div class="spacer"></div>
+    <button mat-raised-button 
+            [color]="showExpired() ? 'accent' : 'primary'" 
+            (click)="toggleExpiredView()">
+      <mat-icon>{{showExpired() ? 'inventory' : 'warning'}}</mat-icon>
+      {{showExpired() ? 'Show All' : 'Show Expired'}}
+    </button>
+  </mat-card-header>
+  <mat-card-content>
+    @if (loading()) {
+      <div class="loading-container">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Loading medications...</p>
+      </div>
+    } @else if (error()) {
+      <div class="error-container">
+        <p>{{ error() }}</p>
+        <button mat-raised-button color="primary" (click)="loadData()">Retry</button>
+      </div>
+    } @else if ((showExpired() ? expiredMedications() : medications()).length === 0) {
+      <div class="empty-container">
+        <p>{{ showExpired() ? 'No expired medications found.' : 'No medications found in inventory.' }}</p>
+        @if (!showExpired()) {
+          <button mat-raised-button color="primary" (click)="openAddDialog()">Add Medication</button>
+        }
+      </div>
+    } @else {
+      <div class="table-container">
+        <table mat-table [dataSource]="showExpired() ? expiredMedications() : medications()">
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let item">{{ item.id }}</td>
+          </ng-container>
+          
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let item">{{ item.name }}</td>
+          </ng-container>
+          
+          <!-- Purpose Column -->
+          <ng-container matColumnDef="purpose">
+            <th mat-header-cell *matHeaderCellDef>Purpose</th>
+            <td mat-cell *matCellDef="let item">{{ item.purpose }}</td>
+          </ng-container>
+          
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>Quantity</th>
+            <td mat-cell *matCellDef="let item">{{ item.quantity }}</td>
+          </ng-container>
+          
+          <!-- Expiration Date Column -->
+          <ng-container matColumnDef="expirationDate">
+            <th mat-header-cell *matHeaderCellDef>Expiration Date</th>
+            <td mat-cell *matCellDef="let item" [class.expired]="showExpired()">
+              {{ item.expirationDate | date:'mediumDate' }}
+            </td>
+          </ng-container>
+          
+          <!-- Storage Location Column -->
+          <ng-container matColumnDef="storageLocation">
+            <th mat-header-cell *matHeaderCellDef>Location</th>
+            <td mat-cell *matCellDef="let item">{{ storageLocationMap().get(item.storageLocationId) || 'Unknown' }}</td>
+          </ng-container>
+          
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let item">
+              <button mat-icon-button color="primary" title="Edit" (click)="openEditDialog(item)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" title="Delete" (click)="deleteMedication(item.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    }
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" (click)="openAddDialog()">
+      <mat-icon>add</mat-icon>
+      Add Medication
+    </button>
+  </mat-card-actions>
+</mat-card>
