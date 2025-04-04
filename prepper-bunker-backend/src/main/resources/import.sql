@@ -202,7 +202,7 @@ VALUES (1, 'Paracetamol', 200, '2024-12-31', 'Schmerzmittel', 2),
        (2, 'Paracetamol', 150, '2025-06-30', 'Schmerzmittel', 3),
        (3, 'Antidepressiva', 30, '2025-03-31', 'Psychische Gesundheit', 3),
        (4, 'Antidiarrhoika', 40, '2025-02-28', 'Verdauungsprobleme', 3),
-       (5, 'Steri-Strips', 50, '2026-12-31', 'Wundverschluss', 3),
+       (5, 'Wundverschlussstreifen', 50, '2026-12-31', 'Wundverschluss', 3),
        (6, 'Augentropfen', 20, '2025-01-31', 'Augenpflege', 3),
        (7, 'Hustenmittel', 30, '2025-04-30', 'Atemwegserkrankungen', 3),
        (8, 'Adrenalin', 10, '2024-11-30', 'Allergische Reaktionen', 3),
@@ -221,15 +221,15 @@ VALUES (1, 'Strom'),          -- ID 1
        (8, 'Wasserstoff'),    -- ID 8
        (9, 'Solarenergie'),   -- ID 9
        (10, 'Windenergie'),   -- ID 10
-       (11, 'Batteriepower'), -- ID 11
+       (11, 'Batterieenergie'), -- ID 11
        (12, 'Heizöl'),        -- ID 12
        (13, 'Kohle'),         -- ID 13
        (14, 'Holzpellets'),   -- ID 14
        (15, 'Lampenöl'),      -- ID 15
-       (16, 'Aviation Fuel'), -- ID 16
-       (17, 'Gasoline 95'),   -- ID 17
-       (18, 'Gasoline 98'),   -- ID 18
-       (19, 'Diesel Winter'), -- ID 19
+       (16, 'Flugzeugkraftstoff'), -- ID 16
+       (17, 'Benzin 95'),   -- ID 17
+       (18, 'Benzin 98'),   -- ID 18
+       (19, 'Winterdiesel'), -- ID 19
        (20, 'Bioethanol'),    -- ID 20
        (21, 'Pflanzenöl'); -- ID 21
 
@@ -239,10 +239,10 @@ VALUES (1, 1, 200.0, 1),  -- Strom
        (3, 13, 50.0, 4),  -- Kohle
        (4, 14, 30.0, 4),  -- Holzpellets
        (5, 15, 15.0, 4),  -- Lampenöl
-       (6, 16, 20.0, 4),  -- Aviation Fuel
-       (7, 17, 100.0, 4), -- Gasoline 95
-       (8, 18, 90.0, 4),  -- Gasoline 98
-       (9, 19, 70.0, 4),  -- Diesel Winter
+       (6, 16, 20.0, 4),  -- Flugzeugkraftstoff
+       (7, 17, 100.0, 4), -- Benzin 95
+       (8, 18, 90.0, 4),  -- Benzin 98
+       (9, 19, 70.0, 4),  -- Winterdiesel
        (10, 20, 25.0, 4), -- Bioethanol
        (11, 21, 10.0, 4); -- Pflanzenöl
 
@@ -256,19 +256,19 @@ VALUES (1, 'AA', 1.5, 100, 1),
        (7, 'Alkaline D', 1.5, 40, 1),
        (8, 'NiCd', 1.2, 60, 1),
        (9, 'CR2', 3.0, 20, 1),
-       (10, 'Lead-Acid', 6.0, 10, 1),
+       (10, 'Blei-Säure', 6.0, 10, 1),
        (11, 'LR20', 1.5, 25, 1);
 
 INSERT INTO generator (id, type, power, fuel_type_id, status, storage_location_id)
-VALUES (1, 'Notstrom', 5.0, 1, 'funktionsfähig', 1),                  -- Strom
+VALUES (1, 'Notstromgenerator', 5.0, 1, 'funktionsfähig', 1),                  -- Strom
        (2, 'Heizgenerator', 8.0, 12, 'funktionsfähig', 5),            -- Heizöl
        (3, 'Kohlegenerator', 5.0, 13, 'in Wartung', 5),               -- Kohle
        (4, 'Pelletgenerator', 4.0, 14, 'funktionsfähig', 5),          -- Holzpellets
        (5, 'Lampenölgenerator', 1.5, 15, 'funktionsfähig', 5),        -- Lampenöl
-       (6, 'Flugzeugtreibstoffgenerator', 10.0, 16, 'in Wartung', 5), -- Aviation Fuel
-       (7, 'Benzingenerator 95', 7.0, 17, 'funktionsfähig', 5),       -- Gasoline 95
-       (8, 'Benzingenerator 98', 7.5, 18, 'funktionsfähig', 5),       -- Gasoline 98
-       (9, 'Winterdieselgenerator', 6.0, 19, 'in Wartung', 5),        -- Diesel Winter
+       (6, 'Flugzeugkraftstoffgenerator', 10.0, 16, 'in Wartung', 5), -- Flugzeugkraftstoff
+       (7, 'Benzingenerator 95', 7.0, 17, 'funktionsfähig', 5),       -- Benzin 95
+       (8, 'Benzingenerator 98', 7.5, 18, 'funktionsfähig', 5),       -- Benzin 98
+       (9, 'Winterdieselgenerator', 6.0, 19, 'in Wartung', 5),        -- Winterdiesel
        (10, 'Bioethanolgenerator', 3.5, 20, 'funktionsfähig', 5),     -- Bioethanol
        (11, 'Pflanzenölgenerator', 2.0, 21, 'funktionsfähig', 5); -- Pflanzenöl
 
