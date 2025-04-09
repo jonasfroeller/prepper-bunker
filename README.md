@@ -2,7 +2,7 @@
 
 This project serves as a learning platform for students to develop full-stack applications using Quarkus and Angular Renaissance. The application simulates a resource management system for a prepper bunker, tracking various resources like weapons, ammunition, food, drinks, medications, fuel, and more.
 
-[showcase.mp4](showcase.mp4)
+https://github.com/user-attachments/assets/99e2f821-5869-4fc1-9d1a-3d23e61ca376
 
 ## Project Overview
 
