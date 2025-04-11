@@ -23,7 +23,7 @@ The application can be packaged using:
 ```
 
 It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+Be aware that it's not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
 
 The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
 
@@ -76,3 +76,17 @@ Create your first JPA entity
 Easily start your REST Web Services
 
 [Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+
+## DockerHub
+
+```bash
+mvnw package
+```
+
+```bash
+docker build -f src/main/docker/Dockerfile.jvm -t jonasfroeller/prepper-bunker-backend:jvm .
+```
+
+```bash
+docker push jonasfroeller/prepper-bunker-backend:jvm
+```
